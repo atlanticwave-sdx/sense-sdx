@@ -1,0 +1,21 @@
+
+{
+    "intents": [
+        {
+            "id": "729485cb-d7f2-454d-9c2e-ca1df64ea43f",
+            "json": "{\"service_instance_uuid\":\"556c262e-1f6c-44cf-911c-f772d7c343fa\",\"data\":{\"type\":\"Multi-Path P2P VLAN\",\"connections\":[{\"bandwidth\":{\"qos_class\":\"guaranteedCapped\",\"capacity\":\"100\"},\"name\":\"Connection 1\",\"terminals\":[{\"vlan_tag\":\"any\",\"uri\":\"urn:ogf:network:icair.org:2013:mren8700:p4test\"},{\"vlan_tag\":\"any\",\"uri\":\"urn:ogf:network:ampath.net:2013:topology:rare-mia0001\"}]}]},\"service\":\"dnc\",\"options\":[],\"service_profile_uuid\":\"d2dc8b4f-7445-4d9e-ac56-2ff82203685c\",\"queries\":[]}",
+            "provisioned": true,
+            "serviceInstanceUUID": "556c262e-1f6c-44cf-911c-f772d7c343fa",
+            "serviceDeltaUUID": "f2433cc1-c8f4-4caa-814a-a63e62d31a6f",
+            "creation_time": "2025-06-18 15:19:18"
+        }
+    ],
+    "alias": "[TEST] Ampath-MREN",
+    "referenceUUID": "556c262e-1f6c-44cf-911c-f772d7c343fa",
+    "profileUUID": "d2dc8b4f-7445-4d9e-ac56-2ff82203685c",
+    "state": "CANCEL - READY",
+    "owner": "admin",
+    "lastState": "COMMITTED",
+    "timestamp": "2025/06/18 15:19:18",
+    "archived": false
+}
