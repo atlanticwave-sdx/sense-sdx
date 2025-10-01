@@ -1,0 +1,9 @@
+AUTH_ENDPOINT: https://sense-o.es.net:8543/auth/realms/StackV/protocol/openid-connect/token
+API_ENDPOINT: https://sense-o.es.net:8443/StackV-web/restapi
+# API_ENDPOINT: https://localhost:8443/StackV-web/restapi -- for local test env
+CLIENT_ID: StackV
+USERNAME: 
+PASSWORD: 
+SECRET: 
+# verify: True 
+verify: False
