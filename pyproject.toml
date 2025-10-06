@@ -1,0 +1,91 @@
+[build-system]
+requires = ["flit"]
+build-backend = "flit.buildapi"
+
+[project]
+name = "sense_sdx"
+version = "0.1.0"
+description = "SENSE SDX Python package"
+authors = [
+    { name="Yufeng Xin", email="yxin@renci.org" }
+]
+dependencies = [
+    "pydantic",
+    "dataclasses-json",
+    "sdx-datamodel @ git+https://github.com/atlanticwave-sdx/datamodel@3.0.0.dev11"
+]
+python-requires = ">=3.8"
+
+[project.urls]
+Home = "https://github.com/atlanticwave-sdx/sense-sdx"
+Issues = "https://github.com/atlanticwave-sdx/sense-sdx/issues"
+
+[project.optional-dependencies]
+test = [
+    "pytest >= 7.1.2",
+    "pytest-cov >= 3.0.0",
+    "jsonschema >= 4.19.0",
+    "jsonref >= 1.1.0",
+]
+lint = [
+    "ruff == 0.1.11",
+    "black == 24.*",
+    "isort == 5.*",
+]
+
+[options.packages.find]
+where = "."
+
+[tool.setuptools_scm]
+# Write version info collected from git to a file.  This happens when
+# we run `python -m build`.
+write_to = "src/sense-sdx/_version.py"
+
+[tool.pytest.ini_options]
+addopts = "--cov --cov-report html --cov-report term-missing"
+testpaths = [
+    "tests"
+]
+
+[tool.black]
+# A line length of 79 is flake8's default, so let's go with that.
+line-length = 79
+
+[tool.isort]
+profile = "black"
+src_paths = ["src", "tests"]
+
+[tool.coverage.run]
+branch = true
+source_pkgs = ["sense_sdx"]
+omit = ["tests/*"]
+relative_files = true
+
+[tool.coverage.report]
+exclude_also = [
+    "def __repr__",
+    "if self.debug:",
+    "self._logger",
+    "raise",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+    ]
+
+[tool.coverage.paths]
+source = [
+    # In checkouts.
+    "src/",
+    # In installed paths.
+    "**/site-packages/",
+    # In tox environments.
+    ".tox/**/site-packages/"
+]
+
+[tool.ruff]
+ignore = [
+    "E501"  # Ignore 'line too long' errors since we auto-format
+            # using black.
+]

@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "intents": {
+      "type": "array",
+      "uniqueItems": true,
+      "minItems": 1,
+      "items": {
+        "required": [
+          "id",
+          "json",
+          "provisioned",
+          "serviceInstanceUUID",
+          "serviceDeltaUUID",
+          "creation_time"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "json": {
+            "type": "string",
+            "minLength": 1
+          },
+          "provisioned": {
+            "type": "boolean"
+          },
+          "serviceInstanceUUID": {
+            "type": "string",
+            "minLength": 1
+          },
+          "serviceDeltaUUID": {
+            "type": "string",
+            "minLength": 1
+          },
+          "creation_time": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "alias": {
+      "type": "string",
+      "minLength": 1
+    },
+    "referenceUUID": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profileUUID": {
+      "type": "string",
+      "minLength": 1
+    },
+    "state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lastState": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "minLength": 1
+    },
+    "archived": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "intents",
+    "alias",
+    "referenceUUID",
+    "profileUUID",
+    "state",
+    "owner",
+    "lastState",
+    "timestamp",
+    "archived"
+  ]
+}
