@@ -1,6 +1,5 @@
 import sdx_datamodel
 
-from sdx_datamodel.models.connection_request import *
 from sdx_datamodel.models.topology import *
 
 class Topologytranslator:
@@ -13,7 +12,7 @@ class Topologytranslator:
         links = [Link(**link) for link in self.topology.get('links', [])]
         return Topology(nodes=nodes, links=links)
 
-    def sense_to_sdx(self) -> sdx_datamodel.models.topology.Topology:
+    def to_sdx(self) -> sdx_datamodel.models.topology.Topology:
         sdx_topology = sdx_datamodel.models.topology.Topology()
 
         # Translate nodes
