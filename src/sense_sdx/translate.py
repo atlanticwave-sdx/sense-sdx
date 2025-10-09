@@ -3,14 +3,8 @@ import sdx_datamodel
 from sdx_datamodel.models.topology import *
 
 class Topologytranslator:
-    def __init__(self, topology: Topology):
+    def __init__(self, topology: dict):
         self.topology = topology
-
-    def sense_parse(self) -> Topology:
-        # Assuming the input is a dictionary representing the topology
-        nodes = [Node(**node) for node in self.topology.get('nodes', [])]
-        links = [Link(**link) for link in self.topology.get('links', [])]
-        return Topology(nodes=nodes, links=links)
 
     def to_sdx(self) -> sdx_datamodel.models.topology.Topology:
         sdx_topology = sdx_datamodel.models.topology.Topology()
