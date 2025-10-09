@@ -6,7 +6,7 @@ class TestDomainModel(unittest.TestCase):
 
     def setUp(self):
         # Load example JSON file
-        with open('./tests/mren8700.json', 'r') as file:
+        with open('./tests/data/mren8700.json', 'r') as file:
             self.example_data = json.load(file)
 
     def test_peer_point_creation(self):
@@ -45,6 +45,8 @@ class TestDomainModel(unittest.TestCase):
             ) for peer in domain_data['peer_points']
             ]
         )
+
+        print(domain_instance)
 
         self.assertEqual(domain_instance.domain_uri, domain_data['domain_uri'])
         self.assertEqual(domain_instance.domain_name, domain_data['domain_name'])
