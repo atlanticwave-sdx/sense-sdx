@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class peer_point(BaseModel):
+class Peer_point(BaseModel):
     port_name: str
     port_uri: str
     peer_capacity: str
@@ -10,7 +10,8 @@ class peer_point(BaseModel):
     port_capacity: str
     peer_uri: str
 
-class domain(BaseModel):
+
+class Domain(BaseModel):
     domain_uri: str
     domain_name: str
-    peer_points: list[peer_point]
+    peer_points: list[Peer_point]

@@ -1,33 +1,45 @@
 import sdx_datamodel
 
 from sdx_datamodel.models.topology import *
+from sdx_datamodel.models.node import *
 
-class Topologytranslator:
-    def __init__(self, topology: dict):
-        self.topology = topology
+from sense_sdx.models.domain import Domain, Peer_point
+import json
 
-    def to_sdx(self) -> sdx_datamodel.models.topology.Topology:
-        sdx_topology = sdx_datamodel.models.topology.Topology()
 
-        # Translate nodes
-        for node in self.topology.nodes:
-            sdx_node = sdx_datamodel.models.topology.Node(
-                id=node.id,
-                name=node.name,
-                type=node.type,
-                location=node.location
-            )
-            sdx_topology.nodes.append(sdx_node)
+class Domaintranslator:
+    def __init__(self):
+        self.node_json = None
 
-        # Translate links
-        for link in self.topology.links:
-            sdx_link = sdx_datamodel.models.topology.Link(
-                id=link.id,
-                source=link.source,
-                destination=link.destination,
-                capacity=link.capacity,
-                latency=link.latency
-            )
-            sdx_topology.links.append(sdx_link)
+    def domain_to_sdx_node_json(self, domain: json) -> json:
+        domain = Domain.model_validate(domain)
 
-        return sdx_topology
+        # Convert the domain instance to a JSON object with the required property mapping
+        node_json = {
+            "id": domain.domain_name,
+            "name": domain.domain_name,
+            "ports": [
+                {
+                    "id": peer_point.port_uri,
+                    "name": peer_point.port_name,
+                    "nni": peer_point.peer_uri,
+                    "services": {
+                        "l2vpn-ptp": {"vlan_range": peer_point.port_vlan_pool}
+                    },
+                }
+                for peer_point in domain.peer_points
+            ],
+        }
+
+        return node_json
+
+    def to_sdx_topology_json(self, domains: list) -> json:
+        topology_json = {
+            "id": "urn:sdx:topology:sense.net",
+            "name": "sense",
+            "nodes": [
+                {self.domain_to_sdx_node_json(domain)} for domain in domains
+            ],
+        }
+
+        return topology_json

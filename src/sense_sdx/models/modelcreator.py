@@ -4,6 +4,7 @@ import json
 import jsonschema
 from typing import Any, Dict
 
+
 class ModelCreator:
     def __init__(self, schema_dir: str, output_dir: str):
         self.schema_dir = Path(schema_dir)
@@ -68,6 +69,7 @@ class ModelCreator:
             f.write(f"class {model_name}(BaseModel):\n")
             for field, field_type in model.__annotations__.items():
                 f.write(f"    {field}: {field_type.__name__}\n")
+
 
 # Example usage
 if __name__ == "__main__":
