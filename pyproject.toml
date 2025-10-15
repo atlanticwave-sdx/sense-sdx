@@ -12,7 +12,7 @@ authors = [
 dependencies = [
     "pydantic",
     "dataclasses-json",
-    "sdx-datamodel @ git+https://github.com/atlanticwave-sdx/datamodel@3.0.0.dev11"
+    "sdx-datamodel @ git+https://github.com/atlanticwave-sdx/datamodel@3.0.0.dev13"
 ]
 python-requires = ">=3.8"
 

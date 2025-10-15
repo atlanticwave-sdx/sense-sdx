@@ -1,6 +1,7 @@
-import unittest
-from sense_sdx.models.domain import Domain, Peer_point
 import json
+import unittest
+
+from sense_sdx.models.domain import Domain, Peer_point
 
 
 class TestDomainModel(unittest.TestCase):

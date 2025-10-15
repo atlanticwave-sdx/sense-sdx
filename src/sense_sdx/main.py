@@ -1,5 +1,6 @@
 import argparse
 import json
+
 from sense_sdx.client import call_services
 from sense_sdx.translate import *
 
@@ -34,16 +35,21 @@ def main():
     args = parser.parse_args()
 
     if args.command == "client":
-        response = call_services(args.service, args.domain, args.service_json)
+        try:
+            response = call_services(
+                args.service, args.domain, args.service_json
+            )
+        except Exception as e:
+            print(f"Error calling service: {e}")
         if len(response) == 0 or "ERROR" in response:
             raise ValueError(
-                f"Discover query failed with option `{args.discover}`"
+                f"Discover query failed with option `{args.service} {args.domain}`"
             )
         print(response)
     elif args.command == "translate":
         with open(args.topology_json) as f:
             topology_json = json.load(f)
-        translated = Domaintranslator.domain_to_sdx_node_json(topology_json)
+        translated = Topologytranslator().to_sdx_topology_json(topology_json)
         print("Translated Topology:", json.dumps(translated, indent=2))
     else:
         parser.print_help()

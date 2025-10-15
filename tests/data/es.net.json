@@ -1,0 +1,88 @@
+{
+  "domain_uri": "urn:ogf:network:es.net:2013:",
+  "domain_name": "n/a",
+  "domain_url": "n/a",
+  "peer_points": [
+    {
+      "port_name": "",
+      "port_uri": "urn:ogf:network:es.net:2013::wash-cr6:lag-50:wix",
+      "peer_capacity": "n/a",
+      "peer_vlan_pool": "n/a",
+      "port_vlan_pool": "92-93,2003-2009,3731-4095,95-122,3631,498-1199,2-89,1860-1899,2312-3629,1700-1729,474-496,3400-3499,2014-2039,204-472,124-193,198-202,3600-3619,2012-2012,1202-2001",
+      "port_capacity": "400000000000",
+      "peer_uri": "urn:ogf:network:wix.internet2.edu:2013::sw.net.wix.internet2.edu:13_2:esnet"
+    },
+    {
+      "port_name": "",
+      "port_uri": "urn:ogf:network:es.net:2013::newy32aoa-cr6:2_1_c4_1:manlan",
+      "peer_capacity": "n/a",
+      "peer_vlan_pool": "n/a",
+      "port_vlan_pool": "1779-1799,1800-1819,3400-3499,3600-3619",
+      "port_capacity": "10000000000",
+      "peer_uri": "urn:ogf:network:manlan.internet2.edu:2013::sw.net.manlan.internet2.edu:15_2:esnet"
+    },
+    {
+      "port_name": "",
+      "port_uri": "urn:ogf:network:es.net:2013::star-cr6:2_1_c19_1:+",
+      "peer_capacity": "n/a",
+      "peer_vlan_pool": "n/a",
+      "port_vlan_pool": "6-4094",
+      "port_capacity": "400000000000",
+      "peer_uri": "urn:ogf:network:tb.es.net:2013::star-tb1:1_1_1:+"
+    },
+    {
+      "port_name": "",
+      "port_uri": "urn:ogf:network:es.net:2013::star-cr6:2_1_c5_1:+",
+      "peer_capacity": "n/a",
+      "peer_vlan_pool": "1779-1798,2024,3694,3985-3989",
+      "port_vlan_pool": "2026,3737-3739,2024,3985-3989,3694-3694,1779-1798",
+      "port_capacity": "30000000000",
+      "peer_uri": "urn:ogf:network:icair.org:2013:mren8700:esnet"
+    },
+    {
+      "port_name": "",
+      "port_uri": "urn:ogf:network:es.net:2013::sunn-cr6:1_1_c3_1:al2s",
+      "peer_capacity": "n/a",
+      "peer_vlan_pool": "n/a",
+      "port_vlan_pool": "2-1236,1239-4089",
+      "port_capacity": "80000000000",
+      "peer_uri": "urn:ogf:network:al2s.net.internet2.edu:2013::rtsw.sunn.net.internet2.edu:et-7/0/0:esnet-sunn"
+    },
+    {
+      "port_name": "",
+      "port_uri": "urn:ogf:network:es.net:2013::eqxld8-cr6:2_1_c22_1:+",
+      "peer_capacity": "n/a",
+      "peer_vlan_pool": "n/a",
+      "port_vlan_pool": "3693-3699,3600-3619,1779-1799",
+      "port_capacity": "100000000000",
+      "peer_uri": "urn:ogf:network:nsi.geant.net:2021:topology-1-lon-uk:esnet1"
+    },
+    {
+      "port_name": "",
+      "port_uri": "urn:ogf:network:es.net:2013::chic-cr6:1_1_c8_1:al2s",
+      "peer_capacity": "n/a",
+      "peer_vlan_pool": "n/a",
+      "port_vlan_pool": "2-999,1001-1234,1237-2001,2003-2031,2033-4089",
+      "port_capacity": "100000000000",
+      "peer_uri": "urn:ogf:network:al2s.net.internet2.edu:2013::rtsw.chic.net.internet2.edu:et-4/3/0:esnet"
+    },
+    {
+      "port_name": "",
+      "port_uri": "urn:ogf:network:es.net:2013::sunn-cr6:1_1_c2_1:+",
+      "peer_capacity": "n/a",
+      "peer_vlan_pool": "n/a",
+      "port_vlan_pool": "1070-1079,1779-1799,3010-3019,3600-3619",
+      "port_capacity": "100000000000",
+      "peer_uri": "urn:ogf:network:snvaca.pacificwave.net:2016:pw-snvl2-1:esnet-sunnyvale"
+    },
+    {
+      "port_name": "",
+      "port_uri": "urn:ogf:network:es.net:2013::newy32aoa-cr6:1_1_c13_1:fabric",
+      "peer_capacity": "n/a",
+      "peer_vlan_pool": "2000-3999",
+      "port_vlan_pool": "2000-2049",
+      "port_capacity": "180000000000",
+      "peer_uri": "urn:ogf:network:stack-fabric:2024:topology:node+NEWY:port+ESnet-400G-NEWY"
+    }
+  ]
+}

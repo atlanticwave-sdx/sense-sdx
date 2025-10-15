@@ -1,8 +1,9 @@
-from pathlib import Path
-from pydantic import BaseModel, create_model
 import json
-import jsonschema
+from pathlib import Path
 from typing import Any, Dict
+
+import jsonschema
+from pydantic import BaseModel, create_model
 
 
 class ModelCreator:

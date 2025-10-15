@@ -1,0 +1,16 @@
+{
+  "domain_uri": "urn:ogf:network:starlight.org:2022",
+  "domain_name": "n/a",
+  "domain_url": "n/a",
+  "peer_points": [
+    {
+      "port_name": "11",
+      "port_uri": "urn:ogf:network:starlight.org:2022:s1:1_1",
+      "peer_capacity": "n/a",
+      "peer_vlan_pool": "1379-1399,3985-3989",
+      "port_vlan_pool": "3985,3986,3987,3988,3989,1379,1380,1381,1382,1383,1384,1385,1386,1387,1388,1389,1390,1391,1392,1393,1394,1395,1396,1397,1398,1399",
+      "port_capacity": "100000",
+      "peer_uri": "urn:ogf:network:icair.org:2013:mren8700:r740xd4"
+    }
+  ]
+}

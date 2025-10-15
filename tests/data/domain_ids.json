@@ -1,0 +1,68 @@
+{
+  "domains": [
+    {
+      "domain_uri": "urn:ogf:network:tier2.ultralight.org:2024",
+      "domain_name": "n/a"
+    },
+    {
+      "domain_uri": "urn:ogf:network:nrp-internet2.io:2025",
+      "domain_name": "n/a"
+    },
+    {
+      "domain_uri": "urn:ogf:network:starlight.org:2022",
+      "domain_name": "n/a"
+    },
+    {
+      "domain_uri": "urn:ogf:network:es.net:2013:",
+      "domain_name": "es.net"
+    },
+    {
+      "domain_uri": "urn:ogf:network:canarie.ca:2017:topology",
+      "domain_name": "canarie.ca:2017"
+    },
+    {
+      "domain_uri": "urn:ogf:network:surf.nl:2020:production",
+      "domain_name": "SURF/NetherLight topology"
+    },
+    {
+      "domain_uri": "urn:ogf:network:nrp-nautilus.io:2020",
+      "domain_name": "n/a"
+    },
+    {
+      "domain_uri": "urn:ogf:network:ampath.net:2013:topology",
+      "domain_name": "ampath.net:2013:topology"
+    },
+    {
+      "domain_uri": "urn:ogf:network:ultralight.org:2013",
+      "domain_name": "n/a"
+    },
+    {
+      "domain_uri": "urn:ogf:network:fnal.gov:2023",
+      "domain_name": "n/a"
+    },
+    {
+      "domain_uri": "urn:ogf:network:sense-oasis-nrp-nautilus.io:2020",
+      "domain_name": "n/a"
+    },
+    {
+      "domain_uri": "urn:ogf:network:al2s.internet2.edu:2023",
+      "domain_name": "al2s-topo"
+    },
+    {
+      "domain_uri": "urn:ogf:network:sttlwa.pacificwave.net:2016:pw-sttl1-1",
+      "domain_name": "sttlwa.pacificwave.net:2016:pw-sttl1-1"
+    },
+    {
+      "domain_uri": "urn:ogf:network:sc-test.cenic.net:2020",
+      "domain_name": "n/a"
+    },
+    {
+      "domain_uri": "urn:ogf:network:stack-fabric:2024:topology",
+      "domain_name": "fabric-topo"
+    },
+    {
+      "domain_uri": "urn:ogf:network:icair.org:2013:mren8700",
+      "domain_name": "icair.org:2013:mren8700"
+    }
+  ]
+}
