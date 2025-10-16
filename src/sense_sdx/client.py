@@ -5,24 +5,11 @@ from sense.client.discover_api import DiscoverApi
 from sense.client.workflow_combined_api import WorkflowCombinedApi
 
 from sense_sdx.models.domain import Domain, Peer_point
+from sense_sdx.translate import Topologytranslator
 
 TOPOLOGY = "topology"
 INTENT = "intent"
 INSTANCE = "instance"
-
-
-def sense_parse(aDomain) -> dict:
-    # Assuming the input is a dictionary representing a domain
-    node = Domain(aDomain)
-    return node
-
-
-def topology_assembly(domains={}):
-    topology = []
-    for _, domain in domains:  # each domain is represented by a node
-        node = sense_parse(domain)
-        topology.append(node)
-    return topology
 
 
 def call_services(service=TOPOLOGY, arg=None, arg_json=None):
@@ -54,3 +41,10 @@ def call_services(service=TOPOLOGY, arg=None, arg_json=None):
                 json.dump(response, f, indent=2)
 
     return response
+
+
+def topology_translate():
+    domains = call_services(service=TOPOLOGY, arg="all")
+    d_t = Topologytranslator()
+    topology = d_t.to_sdx_topology_json(domains["domains"])
+    return topology
