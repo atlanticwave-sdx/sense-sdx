@@ -64,10 +64,8 @@ class Topologytranslator:
                     if port.get("nni")
                     else None
                 )
-                # print(f"Processing port {port['id']} with nni {nni}")
                 if nni and nni in node_ports:
                     peer_node_id, peer_port = node_ports[nni]
-                    # print(f"nni {nni} peer_node_id {peer_node_id} peer_port {peer_port}")
                     # Check if the peer port's nni points back to this port
                     if peer_port.get("nni").replace(" ", "") == port[
                         "id"
@@ -88,6 +86,11 @@ class Topologytranslator:
         return json.dumps(links)
 
     def to_sdx_topology_json(self, domains: list) -> json:
+        domains = [
+            domain
+            for domain in domains
+            if domain.get("peer_points", None) is not None
+        ]
         topology_json = {
             "id": TOPOLOGY_DEFAULT_URI,
             "name": TOPOLOGY_DEFAULT_NAME,

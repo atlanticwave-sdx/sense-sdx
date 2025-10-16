@@ -1,4 +1,5 @@
 import json
+import sys
 
 from sense.client.address_api import AddressApi
 from sense.client.discover_api import DiscoverApi
@@ -26,8 +27,8 @@ def call_services(service=TOPOLOGY, arg=None, arg_json=None):
             domain_ids = discoverApi.discover_domains_get()
             domains = domain_ids["domains"]
             domain_list = [
-                discoverApi.discover_domain_id_get(domain_uri)
-                for domain_uri, _ in domains
+                discoverApi.discover_domain_id_get(domain["domain_uri"])
+                for domain in domains
             ]
             response["domains"] = domain_list
             with open("./tests/data/domains.json", "w") as f:
@@ -48,3 +49,11 @@ def topology_translate():
     d_t = Topologytranslator()
     topology = d_t.to_sdx_topology_json(domains["domains"])
     return topology
+
+
+if __name__ == "__main__":
+    args = sys.argv
+    # args[0] = current file
+    # args[1] = function name
+    # args[2:] = function args : (*unpacked)
+    globals()[args[1]](*args[2:])

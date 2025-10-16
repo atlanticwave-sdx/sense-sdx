@@ -14,4 +14,4 @@ class Peer_point(BaseModel):
 class Domain(BaseModel):
     domain_uri: str
     domain_name: str
-    peer_points: list[Peer_point]
+    peer_points: list[Peer_point] | None = None
