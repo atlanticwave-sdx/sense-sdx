@@ -52,18 +52,26 @@ class Topologytranslator:
         links = []
         seen = set()
         node_ports = {
-            port["id"]: (node["id"], port)
+            port["id"].replace(" ", ""): (node["id"], port)
             for node in nodes
             for port in node.get("ports", [])
         }
-
+        print("Node ports mapping:", node_ports.keys())
         for node in nodes:
             for port in node.get("ports", []):
-                nni = port.get("nni")
+                nni = (
+                    port.get("nni").replace(" ", "")
+                    if port.get("nni")
+                    else None
+                )
+                # print(f"Processing port {port['id']} with nni {nni}")
                 if nni and nni in node_ports:
                     peer_node_id, peer_port = node_ports[nni]
+                    # print(f"nni {nni} peer_node_id {peer_node_id} peer_port {peer_port}")
                     # Check if the peer port's nni points back to this port
-                    if peer_port.get("nni") == port["id"]:
+                    if peer_port.get("nni").replace(" ", "") == port[
+                        "id"
+                    ].replace(" ", ""):
                         # Create a unique link id by sorting the two port ids
                         link_ports = tuple(
                             sorted([port["id"], peer_port["id"]])
@@ -75,7 +83,8 @@ class Topologytranslator:
                                 name=f"{link_ports[0]}-{link_ports[1]}",
                                 ports=[port["id"], peer_port["id"]],
                             )
-                            links.append(link_obj.model_dump())
+                            links.append(link_obj.to_dict())
+        print("Total links created:", len(links))
         return json.dumps(links)
 
     def to_sdx_topology_json(self, domains: list) -> json:

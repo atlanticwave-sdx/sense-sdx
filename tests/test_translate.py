@@ -6,7 +6,11 @@ from sense_sdx.translate import (  # Adjust import if function/class name differ
 )
 
 # Define JSON file names globally
-DOMAIN_FILES = ["./tests/data/mren8700.json", "./tests/data/es.net.json"]
+DOMAIN_FILES = [
+    "./tests/data/mren8700.json",
+    "./tests/data/es.net.json",
+    "./tests/data/starlight.org.json",
+]
 
 
 class TestTranslate(unittest.TestCase):
@@ -36,7 +40,7 @@ class TestTranslate(unittest.TestCase):
 
         # Pass the list to to_sdx_topology_json for testing
         result = d_t.to_sdx_topology_json(all_nodes)
-        print("Combined topology result:", result)
+        # print("Combined topology result:", result)
         self.assertIsNotNone(result)
 
     def test_sdx_topology_validate(self):
