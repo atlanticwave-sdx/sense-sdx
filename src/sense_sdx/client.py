@@ -20,8 +20,6 @@ def call_services(service=TOPOLOGY, arg=None, arg_json=None):
         if arg is None:
             print("Discovering all domains...")
             response = discoverApi.discover_domains_get()
-            with open("./tests/data/domain_ids.json", "w") as f:
-                json.dump(response, f, indent=2)
         elif arg == "all":
             print("Discovering all domains...")
             domain_ids = discoverApi.discover_domains_get()
@@ -31,25 +29,17 @@ def call_services(service=TOPOLOGY, arg=None, arg_json=None):
                 for domain in domains
             ]
             response["domains"] = domain_list
-            with open("./tests/data/domains.json", "w") as f:
-                json.dump(response, f, indent=2)
         else:
             print(f"Discovering domain: {arg}")
             response = discoverApi.discover_domain_id_get(arg)
-            domain_uri = response.get("domain_uri", "")
-            domain_name = domain_uri.split(":")[3] if domain_uri else "unknown"
-            with open(f"./tests/data/{domain_name}.json", "w") as f:
-                json.dump(response, f, indent=2)
 
     return response
-
 
 def topology_translate():
     domains = call_services(service=TOPOLOGY, arg="all")
     d_t = Topologytranslator()
     topology = d_t.to_sdx_topology_json(domains["domains"])
     return topology
-
 
 if __name__ == "__main__":
     args = sys.argv
