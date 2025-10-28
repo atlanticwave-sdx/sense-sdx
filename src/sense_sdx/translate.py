@@ -7,15 +7,15 @@ from sdx_datamodel.models.topology import *
 from sdx_datamodel.parsing.connectionhandler import ConnectionHandler
 from sdx_datamodel.parsing.topologyhandler import TopologyHandler
 from sdx_datamodel.validation.topologyvalidator import TopologyValidator
-from sense_sdx_models.intent import (
+
+from sense_sdx.models.domain import Domain, Peer_point
+from sense_sdx.models.intent import (
     Bandwidth,
     Connection,
     Data,
     Intent,
     Terminal,
 )
-
-from sense_sdx.models.domain import Domain, Peer_point
 
 TOPOLOGY_DEFAULT_NAME = "sense"
 TOPOLOGY_DEFAULT_URI = "urn:sdx:topology:sense.net"
