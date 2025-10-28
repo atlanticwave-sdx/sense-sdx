@@ -12,7 +12,7 @@ authors = [
 dependencies = [
     "pydantic",
     "dataclasses-json",
-    "sense-o-api >= 3.7.2",
+    "sense-o-api >= 1.42",
     "sdx-datamodel @ git+https://github.com/atlanticwave-sdx/datamodel@3.0.0.dev13"
 ]
 python-requires = ">=3.8"
