@@ -1,0 +1,38 @@
+{
+  "name": "new-connection",
+  "id": "urn:sdx:connection:ampath.net:Ampath3:50-sax.net:Sax01:50",
+  "endpoints": [
+    {
+      "port_id": "urn:sdx:port:ampath.net:Ampath3:50",
+      "vlan": "302"
+    },
+    {
+      "port_id": "urn:sdx:port:sax.net:Sax01:50",
+      "vlan": "302"
+    }
+  ],
+  "description": "a test circuit",
+  "scheduling": {
+    "start_time": "",
+    "end_time": ""
+  },
+  "qos_metrics": {
+    "min_bw": {
+      "value": 2,
+      "strict": true
+    },
+    "max_delay": {
+      "value": 50,
+      "strict": false
+    },
+    "max_number_oxps": {
+      "value": 7,
+      "strict": true
+    }
+  },
+  "notifications": [
+    {
+      "email": "muhaziz@fiu.edu"
+    }
+  ]
+}

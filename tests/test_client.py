@@ -1,7 +1,14 @@
-import unittest
 import json
+import unittest
 
-from sense_sdx.client import call_services, topology_translate, TOPOLOGY, INTENT, INSTANCE
+from sense_sdx.client import (
+    INSTANCE,
+    INTENT,
+    TOPOLOGY,
+    call_services,
+    topology_translate,
+)
+
 
 class ClientTests(unittest.TestCase):
     def test_call_services_without_arg(self):
@@ -17,9 +24,7 @@ class ClientTests(unittest.TestCase):
         self.assertTrue(True)
 
     def test_call_services_with_domain_id(self):
-        response = call_services(
-            service=TOPOLOGY, arg="urn:sdx:domain:es.net"
-        )
+        response = call_services(service=TOPOLOGY, arg="urn:sdx:domain:es.net")
 
         with open("./tests/data/es.net.json", "w") as f:
             json.dump(response, f, indent=2)
@@ -29,6 +34,7 @@ class ClientTests(unittest.TestCase):
         result = topology_translate()
 
         self.assertTrue("domains" in result)
+
 
 if __name__ == "__main__":
     unittest.main()

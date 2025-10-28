@@ -64,5 +64,59 @@ class TestTranslate(unittest.TestCase):
         self.assertTrue(is_valid)
 
 
+import json
+import unittest
+from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import patch
+
+from sense_sdx.translate import Requesttranslator
+
+
+class RequestTranslatorTests(unittest.TestCase):
+    def test_from_sdx_request_json(self):
+        request_path = (
+            Path(__file__).resolve().parent
+            / "data"
+            / "test-request-amlight_sax-p2p-v2.json"
+        )
+        request_json = request_path.read_text()
+
+        mock_connection = SimpleNamespace(
+            id="urn:sdx:connection:ampath.net:Ampath3:50-sax.net:Sax01:50",
+            name="new-connection",
+            endpoints=[
+                SimpleNamespace(
+                    port_uri="urn:sdx:port:ampath.net:Ampath3:50",
+                    vlan_tag="302",
+                ),
+                SimpleNamespace(
+                    port_uri="urn:sdx:port:sax.net:Sax01:50",
+                    vlan_tag="302",
+                ),
+            ],
+            qos_metrics=SimpleNamespace(min_bw=2),
+        )
+
+        with patch("sense_sdx.translate.ConnectionHandler") as mock_handler:
+            mock_handler.return_value.import_connection_data.return_value = (
+                mock_connection
+            )
+
+            translator = Requesttranslator()
+            intent = translator.from_sdx_request_json(request_json)
+
+        mock_handler.return_value.import_connection_data.assert_called_once_with(
+            json.loads(request_json)
+        )
+        self.assertEqual(intent.service_instance_id, mock_connection.id)
+        self.assertEqual(intent.data.connections[0].name, mock_connection.name)
+        self.assertEqual(
+            [t.uri for t in intent.data.connections[0].terminals],
+            [endpoint.port_uri for endpoint in mock_connection.endpoints],
+        )
+        self.assertEqual(intent.data.connections[0].bandwidth.capacity, "2")
+
+
 if __name__ == "__main__":
     unittest.main()

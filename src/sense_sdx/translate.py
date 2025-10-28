@@ -4,8 +4,16 @@ import sdx_datamodel
 from sdx_datamodel.models.link import Link
 from sdx_datamodel.models.node import *
 from sdx_datamodel.models.topology import *
+from sdx_datamodel.parsing.connectionhandler import ConnectionHandler
 from sdx_datamodel.parsing.topologyhandler import TopologyHandler
 from sdx_datamodel.validation.topologyvalidator import TopologyValidator
+from sense_sdx_models.intent import (
+    Bandwidth,
+    Connection,
+    Data,
+    Intent,
+    Terminal,
+)
 
 from sense_sdx.models.domain import Domain, Peer_point
 
@@ -110,3 +118,61 @@ class Topologytranslator:
         validator = TopologyValidator(topology)
         is_valid = validator.is_valid()
         return is_valid
+
+
+class Requesttranslator:
+    def from_sdx_request_json(self, connection_json: json) -> json:
+        connection = ConnectionHandler().import_connection_data(
+            json.loads(connection_json)
+        )
+
+        terminals = [
+            Terminal(
+                vlan_tag=endpoint.vlan_tag,
+                uri=endpoint.port_uri,
+            )
+            for endpoint in connection.endpoints
+        ]
+
+        bandwidth = Bandwidth(
+            qos_class="guaranteed",
+            capacity=str(connection.qos_metrics.min_bw),
+        )
+        intent = Intent(
+            type="connection_request",
+            service_instance_id=connection.id,
+            service="dnc",
+            service_profile_uuid="default-service-profile-uuid",
+            data=Data(
+                type="Multi-Path P2P VLAN",
+                connections=[
+                    Connection(
+                        name=connection.name,
+                        bandwidth=bandwidth,
+                        terminals=terminals,
+                    )
+                ],
+            ),
+        )
+        return intent.model_dump_json(indent=2)
+
+
+class Responsetranslator:
+    def to_sdx_response_json(self, intent: Intent) -> json:
+        connection = intent.data.connections[0]
+        endpoints = [
+            sdx_datamodel.models.endpoint.Endpoint(
+                port_uri=terminal.uri,
+                vlan_tag=terminal.vlan_tag,
+            )
+            for terminal in connection.terminals
+        ]
+        sdx_connection = sdx_datamodel.models.connection.Connection(
+            id=intent.service_instance_id,
+            name=connection.name,
+            qos_metrics=sdx_datamodel.models.qos.QoSMetrics(
+                min_bw=int(connection.bandwidth.capacity)
+            ),
+            endpoints=endpoints,
+        )
+        return json.dumps(sdx_connection.to_dict())
